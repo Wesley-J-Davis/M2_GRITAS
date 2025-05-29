@@ -1,34 +1,36 @@
 #!/usr/bin/csh
-file=$1
-#$STORAGE_DIR/$INSTRUMENT/$RES/Y$YYYY/M$MM/$file.nc4
-ncdump -h $file | grep levels: | awk -F: ' { print $NF } ' | awk -F= ' { print $NF } ' | cut -d';' -f 1 > $file.attrcheck.txt
-sed -i 's/"//g' $file.attrcheck.txt
-cat $file.attrcheck.txt
-
-# if check for initial gritas output
-foreach line ( `awk '{print}' $file.attrcheck.txt` )
-        set LINE = `echo $line`
-        echo $LINE
-        if ( $LINE =~ "level" ) then
+set echo
+set file=$1
+echo $file
+# check one: is this file a good final combined file?
+# a properly edited final combined file will have 164 lines when the below ncdump command is perfomed on it
+if ( `ncdump -h -x ${file} | wc -l ` == 164  ) then
+        echo "$file post combine_files.j attr edit check passes"
+# check two: is this file a good intermediate gritas output file?
+# a properly edited intermediate combined file will have the words searched for below in the resultant file from the ncdump command
+else
+	#$STORAGE_DIR/$INSTRUMENT/$RES/Y$YYYY/M$MM/$file.nc4
+	ncdump -h $file | grep levels: | awk -F: ' { print $NF } ' | awk -F= ' { print $NF } ' | cut -d';' -f 1 > $file.attrcheck.txt
+	sed -i 's/"//g' $file.attrcheck.txt
+	exit
+	foreach line ( `awk '{print}' $file.attrcheck.txt` )
+        	set LINE = `echo $line`
+	        echo $LINE
+	        if ( $LINE =~ "level" ) then
                 echo "run_ncrcat succeeded for $line in $file.nc4 "
-        else if ( $LINE =~ "satellite" || $LINE =~ "channel" ) then
-                echo "run_ncrcat succeeded for $LINE in $file.nc4 "
-        else if ( $LINE =~ "channels" ) then
-                echo "run_ncrcat succeeded for $LINE in $file.nc4 "
-        else if ( $LINE =~ "up" ) then
-                echo "run_ncrcat succeeded for $LINE in $file.nc4 "
-        else
-                echo "run_ncrcat failed to edit metadata properly for $file.nc4 "
-                cat $file.attrcheck.txt
-        endif
-        unset LINE
-end
-
-# else if check for combined gritas output
-
-ncdump -h $file > $file.attrcheck.txt
-sed -i 's/"//g' $file.attrcheck.txt
-cat $file.attrcheck.txt
+	        else if ( $LINE =~ "satellite" || $LINE =~ "channel" ) then
+	                echo "run_ncrcat succeeded for $LINE in $file.nc4 "
+	        else if ( $LINE =~ "channels" ) then
+	                echo "run_ncrcat succeeded for $LINE in $file.nc4 "
+	        else if ( $LINE =~ "up" ) then
+	                echo "run_ncrcat succeeded for $LINE in $file.nc4 "
+	        else
+	                echo "run_ncrcat failed to edit metadata properly for $file.nc4 "
+	                cat $file.attrcheck.txt
+	        endif
+	        unset LINE
+	end
+endif
 
 #-a Title,global,o,c,"${title}" \
 #-a ShortName,global,o,c,"${shortname}" \

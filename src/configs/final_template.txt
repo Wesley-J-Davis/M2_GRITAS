@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<netcdf xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2" location="/discover/nobackup/projects/gmao/merra2/data/obs/.WORK/products_wjd/airs_aqua/d/Y2018/M02/merra2.airs_aqua.201802.nc4">
+  <dimension name="time" length="1" isUnlimited="true" />
+  <dimension name="levels" length="117" />
+  <dimension name="longitude" length="576" />
+  <dimension name="latitude" length="361" />
+  <attribute name="_NCProperties" value="version=1|netcdflibversion=4.5.0|hdf5libversion=1.8.20" />
+  <attribute name="calendar" value="standard" />
+  <attribute name="comments" value="File" />
+  <attribute name="model" value="geos/das" />
+  <attribute name="center" value="gsfc" />
+  <attribute name="Conventions" value="CF-1" />
+  <attribute name="Title" value="MERRA-2 Monthly Gridded Innovations and Observations airs_aqua" />
+  <attribute name="ShortName" value="M2_AIRS_AQUA" />
+  <attribute name="LongName" value="MERRA-2 Monthly Gridded Innovations and Observation AIRS_AQUA" />
+  <attribute name="VersionID" value="1" />
+  <attribute name="Format" value="NetCDF-4" />
+  <attribute name="ProcessingLevel" value="4" />
+  <attribute name="Source" value="NASA Global Modeling and Assimilation Office" />
+  <attribute name="DataSetQuality" value="These binned observations include parameters for bias and difference from analysis and first-guess." />
+  <attribute name="Comment" value="These data represent the observations assimilated during the processing of MERRA-2, which have been binned to the MERRA-2 grid." />
+  <attribute name="RelatedURL" value="https://gmao.gsfc.nasa.gov/reanalysis/MERRA-2/" />
+  <attribute name="MapProjection" value="Geographic latitude/longitude" />
+  <attribute name="Datum" value="WGS-84" />
+  <attribute name="ProductionDateTime" value="Wed 28 May 2025 05:39:38 PM EDT" />
+  <attribute name="Filename" value="merra2.airs_aqua.201802.nc4" />
+  <attribute name="SpatialCoverage" value="global" />
+  <attribute name="Institution" value="NASA Global Modeling and Assimilation Office" />
+  <attribute name="WesternmostLongitude" value="-180.0" />
+  <attribute name="EasternmostLongitude" value="179.375" />
+  <attribute name="SouthernmostLatitude" value="-90.0" />
+  <attribute name="NorthernmostLatitude" value="90.0" />
+  <attribute name="LatitudeResolution" value="0.5" />
+  <attribute name="LongitudeResolution" value="0.625" />
+  <attribute name="DataResolution" value="0.5x0.625" />
+  <attribute name="IdentifierProductDOIAuthority" value="http://dx.doi.org" />
+  <attribute name="IdentifierProductDOI" value="10.5067/MEASURES/MERRA2_AIRS_AQUA" />
+  <attribute name="GranuleID" value="merra2.airs_aqua.201802.nc4" />
+  <attribute name="RangeBeginningDate" value="2018-01-31" />
+  <attribute name="RangeBeginningTime" value="21:00:00.000000" />
+  <attribute name="RangeEndingDate" value="2018-02-28" />
+  <attribute name="RangeEndingTime" value="20:59:59.999999" />
+  <variable name="time" shape="time" type="double">
+    <attribute name="units" value="minutes since 2018-02-01 00:00:00" />
+    <attribute name="long_name" value="time" />
+    <attribute name="calendar" value="standard" />
+    <attribute name="standard_name" value="time" />
+  </variable>
+  <variable name="levels" shape="levels" type="double">
+    <attribute name="units" value="level" />
+    <attribute name="description" value="satellite channel" />
+    <attribute name="type" value="channels" />
+    <attribute name="long_name" value="satellite channel" />
+    <attribute name="positive" value="up" />
+  </variable>
+  <variable name="longitude" shape="longitude" type="double">
+    <attribute name="units" value="degrees_east" />
+    <attribute name="long_name" value="Longitude" />
+  </variable>
+  <variable name="latitude" shape="latitude" type="double">
+    <attribute name="units" value="degrees_north" />
+    <attribute name="long_name" value="Latitude" />
+  </variable>
+  <variable name="mean_bias" shape="time levels latitude longitude" type="float">
+    <attribute name="units" value="K" />
+    <attribute name="grid_name" value="grid01" />
+    <attribute name="grid_type" value="linear" />
+    <attribute name="time_statistic" value="instantaneous" />
+    <attribute name="missing_value" type="float" value="1.e+15" />
+    <attribute name="comments" value="bias" />
+    <attribute name="long_name" value="airs_aqua brightness temperature mean bias" />
+    <attribute name="_FillValue" type="float" value="1.e+15" />
+  </variable>
+  <variable name="mean_obs" shape="time levels latitude longitude" type="float">
+    <attribute name="units" value="K" />
+    <attribute name="grid_name" value="grid01" />
+    <attribute name="grid_type" value="linear" />
+    <attribute name="time_statistic" value="instantaneous" />
+    <attribute name="missing_value" type="float" value="1.e+15" />
+    <attribute name="comments" value="obs" />
+    <attribute name="long_name" value="airs_aqua brightness temperature mean observations" />
+    <attribute name="_FillValue" type="float" value="1.e+15" />
+  </variable>
+  <variable name="mean_oma" shape="time levels latitude longitude" type="float">
+    <attribute name="units" value="K" />
+    <attribute name="grid_name" value="grid01" />
+    <attribute name="grid_type" value="linear" />
+    <attribute name="time_statistic" value="instantaneous" />
+    <attribute name="missing_value" type="float" value="1.e+15" />
+    <attribute name="comments" value="oma" />
+    <attribute name="long_name" value="airs_aqua brightness temperature mean O-minus-A" />
+    <attribute name="_FillValue" type="float" value="1.e+15" />
+  </variable>
+  <variable name="mean_omf" shape="time levels latitude longitude" type="float">
+    <attribute name="units" value="K" />
+    <attribute name="grid_name" value="grid01" />
+    <attribute name="grid_type" value="linear" />
+    <attribute name="time_statistic" value="instantaneous" />
+    <attribute name="missing_value" type="float" value="1.e+15" />
+    <attribute name="comments" value="omf" />
+    <attribute name="long_name" value="airs_aqua brightness temperature mean O-minus-F" />
+    <attribute name="_FillValue" type="float" value="1.e+15" />
+  </variable>
+  <variable name="nobs_obs" shape="time levels latitude longitude" type="float">
+    <attribute name="grid_name" value="grid01" />
+    <attribute name="grid_type" value="linear" />
+    <attribute name="time_statistic" value="instantaneous" />
+    <attribute name="missing_value" type="float" value="1.e+15" />
+    <attribute name="comments" value="obs" />
+    <attribute name="long_name" value="airs_aqua brightness temperature number observations" />
+    <attribute name="_FillValue" type="float" value="1.e+15" />
+    <attribute name="units" value="count" />
+  </variable>
+  <variable name="stdv_bias" shape="time levels latitude longitude" type="float">
+    <attribute name="units" value="K" />
+    <attribute name="grid_name" value="grid01" />
+    <attribute name="grid_type" value="linear" />
+    <attribute name="time_statistic" value="instantaneous" />
+    <attribute name="missing_value" type="float" value="1.e+15" />
+    <attribute name="comments" value="bias" />
+    <attribute name="long_name" value="airs_aqua brightness temperature square root of variance bias" />
+    <attribute name="_FillValue" type="float" value="1.e+15" />
+  </variable>
+  <variable name="stdv_obs" shape="time levels latitude longitude" type="float">
+    <attribute name="units" value="K" />
+    <attribute name="grid_name" value="grid01" />
+    <attribute name="grid_type" value="linear" />
+    <attribute name="time_statistic" value="instantaneous" />
+    <attribute name="missing_value" type="float" value="1.e+15" />
+    <attribute name="comments" value="obs" />
+    <attribute name="long_name" value="airs_aqua brightness temperature square root of variance observations" />
+    <attribute name="_FillValue" type="float" value="1.e+15" />
+  </variable>
+  <variable name="stdv_oma" shape="time levels latitude longitude" type="float">
+    <attribute name="units" value="K" />
+    <attribute name="grid_name" value="grid01" />
+    <attribute name="grid_type" value="linear" />
+    <attribute name="time_statistic" value="instantaneous" />
+    <attribute name="missing_value" type="float" value="1.e+15" />
+    <attribute name="comments" value="oma" />
+    <attribute name="long_name" value="airs_aqua brightness temperature square root of variance O-minus-A" />
+    <attribute name="_FillValue" type="float" value="1.e+15" />
+  </variable>
+  <variable name="stdv_omf" shape="time levels latitude longitude" type="float">
+    <attribute name="units" value="K" />
+    <attribute name="grid_name" value="grid01" />
+    <attribute name="grid_type" value="linear" />
+    <attribute name="time_statistic" value="instantaneous" />
+    <attribute name="missing_value" type="float" value="1.e+15" />
+    <attribute name="comments" value="omf" />
+    <attribute name="long_name" value="airs_aqua brightness temperature square root of variance O-minus-F" />
+    <attribute name="_FillValue" type="float" value="1.e+15" />
+  </variable>
+  <variable name="wavelength" shape="levels" type="float">
+    <attribute name="_FillValue" type="float" value="1.e+15" />
+    <attribute name="long_name" value="channel wavelength" />
+    <attribute name="units" value="micrometers" />
+  </variable>
+  <variable name="frequency" shape="levels" type="float">
+    <attribute name="long_name" value="channel frequency" />
+    <attribute name="units" value="gigahertz" />
+    <attribute name="_FillValue" type="float" value="1.e+15" />
+  </variable>
+</netcdf>

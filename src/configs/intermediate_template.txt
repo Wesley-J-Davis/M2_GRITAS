@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<netcdf xmlns="http://www.unidata.ucar.edu/namespaces/netcdf/ncml-2.2" location="/discover/nobackup/projects/gmao/merra2/data/obs/.WORK/products_wjd/airs_aqua/d/Y2018/M02/merra2.airs_aqua.mean3d_bias_p.201802.nc4">
+  <dimension name="time" length="1" isUnlimited="true" />
+  <dimension name="levels" length="117" />
+  <dimension name="longitude" length="576" />
+  <dimension name="latitude" length="361" />
+  <attribute name="_NCProperties" value="version=1|netcdflibversion=4.5.0|hdf5libversion=1.8.20" />
+  <attribute name="Conventions" value="COARDS" />
+  <attribute name="calendar" value="standard" />
+  <attribute name="comments" value="File" />
+  <attribute name="model" value="geos/das" />
+  <attribute name="center" value="gsfc" />
+  <variable name="time" shape="time" type="double">
+    <attribute name="units" value="hours since 2018-2-14 12" />
+  </variable>
+  <variable name="levels" shape="levels" type="double">
+    <attribute name="units" value="level" />
+    <attribute name="description" value="satellite channel" />
+    <attribute name="type" value="channels" />
+    <attribute name="long_name" value="satellite channel" />
+    <attribute name="positive" value="up" />
+  </variable>
+  <variable name="longitude" shape="longitude" type="double">
+    <attribute name="units" value="degrees_east" />
+    <attribute name="long_name" value="Longitude" />
+  </variable>
+  <variable name="latitude" shape="latitude" type="double">
+    <attribute name="units" value="degrees_north" />
+    <attribute name="long_name" value="Latitude" />
+  </variable>
+  <variable name="mean_bias" shape="time levels latitude longitude" type="float">
+    <attribute name="long_name" value="AIRS AQUA (PM): brightness temperature [K]" />
+    <attribute name="units" value="K" />
+    <attribute name="grid_name" value="grid01" />
+    <attribute name="grid_type" value="linear" />
+    <attribute name="time_statistic" value="instantaneous" />
+    <attribute name="missing_value" type="float" value="1.e+15" />
+    <attribute name="comments" value="bias" />
+  </variable>
+</netcdf>
