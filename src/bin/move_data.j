@@ -1,4 +1,4 @@
-!/usr/bin/csh
+#!/usr/bin/csh
 
 #SBATCH --time=0:30:00
 ##SBATCH --nodes=1 --ntasks-per-node=40
