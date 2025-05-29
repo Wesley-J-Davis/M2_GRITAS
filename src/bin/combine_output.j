@@ -20,7 +20,7 @@ set DAY_TABLE = ( 31 28 31 30 31 30 31 31 30 31 30 31 )
 set WORK_DIR   = /discover/nobackup/projects/gmao/merra2/data/obs/.WORK/raw_obs_wjd
 set OBS_DIR     = $WORK_DIR
 set STORAGE_DIR = /discover/nobackup/projects/gmao/merra2/data/obs/.WORK/products_wjd
-set RC_DIR      = $NOBACKUP/TEST/M2_GRITAS/GrITAS/src/Components/gritas/GIO
+set RC_DIR      = /discover/nobackup/dao_ops/TEST/M2_GRITAS/GrITAS/src/Components/gritas/GIO
 set HOST_DIR = /discover/nobackup/projects/gmao/merra2/data/obs/.WORK/products_wjd
 
 set YEAR_TABLE = ( 201802 )

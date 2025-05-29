@@ -14,7 +14,7 @@ set WORK_DIR   = /discover/nobackup/projects/gmao/merra2/data/obs/.WORK/raw_obs_
 set OBS_DIR     = /home/dao_ops/$ExpID/run/.../archive/obs
 #set WORK_DIR = /discover/nobackup/wjdavis5
 set STORAGE_DIR = /discover/nobackup/projects/gmao/merra2/data/obs/.WORK/products_wjd
-set RC_DIR      = $NOBACKUP/TEST/M2_GRITAS/GrITAS/src/Components/gritas/GIO
+set RC_DIR      = /discover/nobackup/dao_ops/TEST/M2_GRITAS/GrITAS/src/Components/gritas/GIO
 #mkdir -p $WORK_DIR
 #set INSTRUMENT_TABLE = "airs_aqua"
 #set INSTRUMENT_TABLE = `cat  $RC_DIR/instrument.list`

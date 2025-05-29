@@ -15,11 +15,11 @@ source $BinDir/g5_modules
 
 module load nco
 
-set DAY_TABLE = ( 31 28 31 30 31 30 31 31 30 31 30 31 )
-set WORK_DIR   = /.../.WORK/raw_obs_wjd
+set DAY_TABLE   = ( 31 28 31 30 31 30 31 31 30 31 30 31 )
+set WORK_DIR    = /discover/nobackup/projects/gmao/merra2/data/obs/.WORK/raw_obs_wjd
 set OBS_DIR     = $WORK_DIR
-set STORAGE_DIR = /.../.WORK/products_wjd
-set RC_DIR      = $NOBACKUP/TEST/M2_GRITAS/GrITAS/src/Components/gritas/GIO
+set STORAGE_DIR = /discover/nobackup/projects/gmao/merra2/data/obs/.WORK/products_wjd
+set RC_DIR      = /discover/nobackup/dao_ops/TEST/M2_GRITAS/GrITAS/src/Components/gritas/GIO
 
 #set YEAR_TABLE = ( 201802 )
 #set INSTRUMENT_TABLE = "airs_aqua"
