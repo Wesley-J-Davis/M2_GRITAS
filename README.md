@@ -19,7 +19,7 @@ Checks metadata
   batch_wrapper.sh $YYYY 
     INSTRUMENT_LIST = `cat $RC_DIR/instrument.list` 
       for I in INSTRUMENT_LIST 
-        move data with slurm, capture jobID.datamove 
-        process gritas after jobID.datamove complete, capture jobID.gritas 
-        process combine files after jobID.gritas completes 
+        move_data.j , capture jobID.datamove 
+        process_gritas.j after jobID.datamove complete, capture jobID.gritas 
+        combine_output.j after jobID.gritas completes 
 ```
