@@ -98,7 +98,7 @@ foreach Date ( `echo $YEAR_TABLE` )
                         $gritas -obias -o $out_fileb $Gritas_Core_Opt ${ods_Files} &
 
                         wait
-                        rm -f ${ods_Files}
+                        #rm -f ${ods_Files}
 
                         mkdir -p $STORAGE_DIR/$INSTRUMENT/$RES/Y$YYYY/M$MM
                         if ($INSTRUMENT == "sbuv2_nim07" || $INSTRUMENT == "sbuv2_n07" || $INSTRUMENT == "sbuv2_n11" || $INSTRUMENT == "sbuv2_n14" || $INSTRUMENT == "sbuv2_n16" || $INSTRUMENT == "sbuv2_n17"  ) then
@@ -194,8 +194,9 @@ foreach Date ( `echo $YEAR_TABLE` )
                                         mv -f $STORAGE_DIR/$INSTRUMENT/$RES/Y$YYYY/M$MM/$TAG.${INSTRUMENT}.stdv3d_omf_p.${Date}${syn_tag}.nc $STORAGE_DIR/$INSTRUMENT/$RES/Y$YYYY/M$MM/$TAG.${INSTRUMENT}.stdv3d_omf_p.${Date}${syn_tag}.nc4
                                 else
                                         mv -f ${out_filef}.stdv.nc4 $STORAGE_DIR/$INSTRUMENT/$RES/Y$YYYY/M$MM/$TAG.${INSTRUMENT}.stdv3d_omf_p.${Date}${syn_tag}.nc4
+				endif
 
-                                                                        if ( -e $STORAGE_DIR/$INSTRUMENT/$RES/Y$YYYY/M$MM/$TAG.${INSTRUMENT}.mean3d_oma_p.${Date}${syn_tag}.nc ) then
+                                if ( -e $STORAGE_DIR/$INSTRUMENT/$RES/Y$YYYY/M$MM/$TAG.${INSTRUMENT}.mean3d_oma_p.${Date}${syn_tag}.nc ) then
                                         mv -f $STORAGE_DIR/$INSTRUMENT/$RES/Y$YYYY/M$MM/$TAG.${INSTRUMENT}.mean3d_oma_p.${Date}${syn_tag}.nc $STORAGE_DIR/$INSTRUMENT/$RES/Y$YYYY/M$MM/$TAG.${INSTRUMENT}.mean3d_oma_p.${Date}${syn_tag}.nc4
                                 else
                                         mv -f ${out_filea}.bias.nc4 $STORAGE_DIR/$INSTRUMENT/$RES/Y$YYYY/M$MM/$TAG.${INSTRUMENT}.mean3d_oma_p.${Date}${syn_tag}.nc4

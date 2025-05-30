@@ -23,7 +23,7 @@ set STORAGE_DIR = /discover/nobackup/projects/gmao/merra2/data/obs/.WORK/product
 set RC_DIR      = /discover/nobackup/dao_ops/TEST/M2_GRITAS/GrITAS/src/Components/gritas/GIO
 set HOST_DIR = /discover/nobackup/projects/gmao/merra2/data/obs/.WORK/products_wjd
 
-set YEAR_TABLE = ( 201802 )
+set YEAR_TABLE = ( 201803 )
 set INSTRUMENT_TABLE = "airs_aqua"
 #set INSTRUMENT_TABLE = `cat  $RC_DIR/instrument.list`
 
@@ -46,7 +46,7 @@ setenv argv
 set argv = ( $TEMP_argv )
 
 # all 00 06 12 18
-set SYNOP_TABLE = ( 00 06 12 18)
+set SYNOP_TABLE = ( all 00 06 12 18)
 
 # set INSTRUMENT_TABLE = `/bin/ls -1 $HOST_DIR`
 # set INSTRUMENT_TABLE = 'amsua_metop-a'
@@ -119,6 +119,9 @@ foreach INSTRUMENT ( `echo $INSTRUMENT_TABLE` )
 
                                                 set kount = 0
 
+                                                set file  = merra2.${INSTRUMENT}.${YYYY}${MM}${SYNOP}.nc4
+
+
                                                 foreach MODE ( mean nobs stdv )
 
                                                         if (  $MODE != "nobs" ) then
@@ -139,23 +142,23 @@ foreach INSTRUMENT ( `echo $INSTRUMENT_TABLE` )
                                                                 time ncatted -h -O -a comments,,m,c,"omf" $OUT_DIR/merra2.${INSTRUMENT}.${MODE}3d_omf_p.${YYYY}${MM}${SYNOP}.nc4
                                                                 time ncatted -h -O -a units,${MODE}_omf,m,c,"K" $OUT_DIR/merra2.${INSTRUMENT}.${MODE}3d_omf_p.${YYYY}${MM}${SYNOP}.nc4
 
-                                                                if ( $kount == 0 ) time ncrcat -h -O $OUT_DIR/merra2.${INSTRUMENT}.${MODE}3d_bias_p.${YYYY}${MM}${SYNOP}.nc4 $OUT_DIR/merra2.${INSTRUMENT}.${YYYY}${MM}${SYNOP}.nc4
-                                                                if ( $kount > 0 ) time ncrcat -h -A $OUT_DIR/merra2.${INSTRUMENT}.${MODE}3d_bias_p.${YYYY}${MM}${SYNOP}.nc4 $OUT_DIR/merra2.${INSTRUMENT}.${YYYY}${MM}${SYNOP}.nc4
+                                                                if ( $kount == 0 ) time ncrcat -h -O $OUT_DIR/merra2.${INSTRUMENT}.${MODE}3d_bias_p.${YYYY}${MM}${SYNOP}.nc4 $OUT_DIR/${file}
+                                                                if ( $kount > 0 ) time ncrcat -h -A $OUT_DIR/merra2.${INSTRUMENT}.${MODE}3d_bias_p.${YYYY}${MM}${SYNOP}.nc4 $OUT_DIR/${file}
                                                         endif
 
-                                                        time ncrcat -h -A $OUT_DIR/merra2.${INSTRUMENT}.${MODE}3d_obs_p.${YYYY}${MM}${SYNOP}.nc4 $OUT_DIR/merra2.${INSTRUMENT}.${YYYY}${MM}${SYNOP}.nc4
+                                                        time ncrcat -h -A $OUT_DIR/merra2.${INSTRUMENT}.${MODE}3d_obs_p.${YYYY}${MM}${SYNOP}.nc4 $OUT_DIR/${file}
 
                                                         if (  $MODE != "nobs" ) then
-                                                                time ncrcat -h -A $OUT_DIR/merra2.${INSTRUMENT}.${MODE}3d_oma_p.${YYYY}${MM}${SYNOP}.nc4 $OUT_DIR/merra2.${INSTRUMENT}.${YYYY}${MM}${SYNOP}.nc4
-                                                                time ncrcat -h -A $OUT_DIR/merra2.${INSTRUMENT}.${MODE}3d_omf_p.${YYYY}${MM}${SYNOP}.nc4 $OUT_DIR/merra2.${INSTRUMENT}.${YYYY}${MM}${SYNOP}.nc4
+                                                                time ncrcat -h -A $OUT_DIR/merra2.${INSTRUMENT}.${MODE}3d_oma_p.${YYYY}${MM}${SYNOP}.nc4 $OUT_DIR/${file}
+                                                                time ncrcat -h -A $OUT_DIR/merra2.${INSTRUMENT}.${MODE}3d_omf_p.${YYYY}${MM}${SYNOP}.nc4 $OUT_DIR/${file}
                                                         endif
 
-                                                        #time ncrcat -h -O -A /discover/nobackup/rgovinda/Lucchesi/WAVELENGTH_TABLES/merra2.${INSTRUMENT}.freq_wave.*.nc4 $OUT_DIR/merra2.${INSTRUMENT}.${YYYY}${MM}${SYNOP}.nc4
-#                                                        time ncrcat -h -A $WAVELENGTH_TABLES/merra2.${INSTRUMENT}.freq_wave.*.nc4 $OUT_DIR/merra2.${INSTRUMENT}.${YYYY}${MM}${SYNOP}.nc4
+                                                        #time ncrcat -h -O -A /discover/nobackup/rgovinda/Lucchesi/WAVELENGTH_TABLES/merra2.${INSTRUMENT}.freq_wave.*.nc4 $OUT_DIR/${file}
+#                                                        time ncrcat -h -A $WAVELENGTH_TABLES/merra2.${INSTRUMENT}.freq_wave.*.nc4 $OUT_DIR/${file}
 
                                                         @ kount = $kount + 1
                                                 end    #MODE
-                                                time ncrcat -h -A $WAVELENGTH_TABLES/merra2.${INSTRUMENT}.freq_wave.*.nc4 $OUT_DIR/merra2.${INSTRUMENT}.${YYYY}${MM}${SYNOP}.nc4
+                                                time ncrcat -h -A $WAVELENGTH_TABLES/merra2.${INSTRUMENT}.freq_wave.*.nc4 $OUT_DIR/${file}
 
 
                                                 #/bin/rm -f   $OUT_DIR/*_p.${YYYY}${MM}*.nc4
@@ -271,7 +274,7 @@ foreach INSTRUMENT ( `echo $INSTRUMENT_TABLE` )
                                                         set granuleid = merra2.${INSTRUMENT}.${YYYY}${MM}${SYNOP}.nc4
                                                         echo $granule
                                                 endif
-                                               echo " Adding metta data"
+                                                echo " Adding metta data"
                                                 ncatted -h  -O ${granule}   \
                                                         -a Title,global,o,c,"${title}" \
                                                         -a ShortName,global,o,c,"${shortname}" \
@@ -336,6 +339,11 @@ foreach INSTRUMENT ( `echo $INSTRUMENT_TABLE` )
                                                         # -a _FillValue,frequency,o,f,"1.e+15" \
                                                         # -a _FillValue,wavelength,o,f,"1.e+15" \
                                                         # $ESMADIR/install/bin/n4zip  $granule
+							if ( `ncks -m -M ${granule} | wc -l ` == 167  ) then
+							        echo "$file post combine_files.j attr edit check passes"
+							else
+								echo "$file post combine_files.j attr edit check FAILS"
+								exit
                                                         $NOBACKUP/TEST/M2_GRITAS/GrITAS/src/Components/gritas/GIO/n4zip.csh $granule
 
                                                         echo " ----------------------------"
