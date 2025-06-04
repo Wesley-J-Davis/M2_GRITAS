@@ -8,5 +8,5 @@ YYYY=$1
 for I in ${INSTRUMENT_TABLE[@]}
 do
 	echo "Executing script for: $I"
-	/usr/bin/bash $NOBACKUP/TEST/M2_GRITAS/batch_wrapper.sh $I $YYYY
+	./batch_wrapper.sh $I $YYYY
 done
