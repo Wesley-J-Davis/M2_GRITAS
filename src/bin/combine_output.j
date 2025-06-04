@@ -23,8 +23,8 @@ set STORAGE_DIR = /discover/nobackup/projects/gmao/merra2/data/obs/.WORK/product
 set RC_DIR      = /discover/nobackup/dao_ops/TEST/M2_GRITAS/GrITAS/src/Components/gritas/GIO
 set HOST_DIR = /discover/nobackup/projects/gmao/merra2/data/obs/.WORK/products_wjd
 
-set YEAR_TABLE = ( 201803 )
-set INSTRUMENT_TABLE = "airs_aqua"
+#set YEAR_TABLE = ( 201803 )
+#set INSTRUMENT_TABLE = "airs_aqua"
 #set INSTRUMENT_TABLE = `cat  $RC_DIR/instrument.list`
 
 set RC_TABLE         = `echo $INSTRUMENT_TABLE`
@@ -160,8 +160,6 @@ foreach INSTRUMENT ( `echo $INSTRUMENT_TABLE` )
                                                 end    #MODE
                                                 time ncrcat -h -A $WAVELENGTH_TABLES/merra2.${INSTRUMENT}.freq_wave.*.nc4 $OUT_DIR/${file}
 
-
-                                                #/bin/rm -f   $OUT_DIR/*_p.${YYYY}${MM}*.nc4
 
                                                 # UPDATE GLOBAL METADTA
                                                 # Extract values from lookup tables
@@ -363,4 +361,4 @@ foreach INSTRUMENT ( `echo $INSTRUMENT_TABLE` )
                 end      # YYYYMM
         endif    # conv check
 end       # INSTRUMENT
-#/bin/rm/$OUT_DIR/*_p.*
+/bin/rm /$OUT_DIR/*_p.*
