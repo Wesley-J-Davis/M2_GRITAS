@@ -20,7 +20,7 @@ umask 022
 limit stacksize unlimited
 
 setenv RootDir  /discover/nobackup/dao_ops/TEST/M2_GRITAS/GrITAS
-setenv RootDir  /gpfsm/dnb34/rgovinda/source_motel/SLES12/GrITAS-MERRA2_V2_SLES15/GrITAS
+#setenv RootDir  /gpfsm/dnb34/rgovinda/source_motel/SLES12/GrITAS-MERRA2_V2_SLES15/GrITAS
 setenv BinDir   ${RootDir}/Linux/bin
 
 setenv ExpID d5124_m2_jan10    
@@ -29,8 +29,8 @@ setenv TAG   merra2
 #set YEAR_TABLE = ( 201801 )
 
 #setenv Dir /gpfsm/dnb05/projects/p47/Ravi/MERRA-2/$ExpID
-source /gpfsm/dnb34/rgovinda/source_motel/SLES12/GrITAS-MERRA2_V2_SLES15/GrITAS/src/g5_modules
-#source $BinDir/g5_modules
+#source /gpfsm/dnb34/rgovinda/source_motel/SLES12/GrITAS-MERRA2_V2_SLES15/GrITAS/src/g5_modules
+source $BinDir/g5_modules
 
 set RC_DIR      = $NOBACKUP/TEST/M2_GRITAS/GrITAS/src/Components/gritas/GIO
 set RC_DIR	= ${RootDir}/src/Components/gritas/GIO
@@ -38,6 +38,8 @@ set RC_File  =  ${RC_DIR}/rc_files2/gritas_upconv_merra2.rc
 set RES      = 'd'
 set Gritas_Core_Opt  = "-nlevs 106 -rc $RC_File -hdf -res $RES -ncf -ospl -lb -nopassive"
 
+set RC_File          = ${RC_DIR}/rc_files/gritas_upconv_merra.rc
+set Gritas_Core_Opt  = "-nlevs 50 -rc $RC_File -res d -ncf -ospl -lb -nopassive"
 set ObsDir0      =   /discover/nobackup/projects/gmao/merra2/data/obs/.WORK
 set ObsDir       =   /discover/nobackup/$user/$ExpID
 set ObsDir       =   /gpfsm/dhome/dao_ops/$ExpID/run/.../archive/obs 
