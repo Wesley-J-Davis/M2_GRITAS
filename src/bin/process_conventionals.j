@@ -29,8 +29,8 @@ setenv TAG   merra2
 #set YEAR_TABLE = ( 201801 )
 
 #setenv Dir /gpfsm/dnb05/projects/p47/Ravi/MERRA-2/$ExpID
-source /gpfsm/dnb34/rgovinda/source_motel/SLES12/GrITAS-MERRA2_V2_SLES15/GrITAS/src/g5_modules
-#source $BinDir/g5_modules
+#source /gpfsm/dnb34/rgovinda/source_motel/SLES12/GrITAS-MERRA2_V2_SLES15/GrITAS/src/g5_modules
+source $BinDir/g5_modules
 
 set RC_DIR	= ${RootDir}/src/Components/gritas/GIO
 set RC_File  =  ${RC_DIR}/rc_files2/gritas_upconv_merra2.rc
