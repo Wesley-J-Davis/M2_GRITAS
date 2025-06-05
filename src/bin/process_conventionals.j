@@ -115,11 +115,11 @@ foreach YYYYMM ( `echo $YEAR_TABLE` )
      set diag_anl_File = $ObsDir/Y$YYYY/M$MM/D$Day/${ExpID}.diag_conv_anl.$DateHr
      set diag_ges_File = $ObsDir/Y$YYYY/M$MM/D$Day/${ExpID}.diag_conv_ges.$DateHr
      nohup dmget $diag_anl_File $diag_ges_File &
-     nohup dmget  d5124_m2_jan10.diag_conv.${Date}_${Hour}z.ods &
+#     nohup dmget  d5124_m2_jan10.diag_conv.${Date}_${Hour}z.ods &
 
      wait
-     cp $ObsDir/Y$YYYY/M$MM/D$Day/H${Hour}/d5124_m2_jan10.diag_conv.${Date}_${Hour}z.ods .
-#     cp $diag_anl_File .
+#     cp $ObsDir/Y$YYYY/M$MM/D$Day/H${Hour}/d5124_m2_jan10.diag_conv.${Date}_${Hour}z.ods .
+     cp $diag_anl_File .
 #    cp $diag_ges_File . 
 
      set out_fileo   = gritaso${Hour}
@@ -127,8 +127,8 @@ foreach YYYYMM ( `echo $YEAR_TABLE` )
 
 #    echo $diag_anl_File $out_fileo
 #     $gritas -obs -o $out_fileo $Gritas_Core_Opt ${diag_anl_File} &
-#     $gritas -obs -o $out_fileo $Gritas_Core_Opt ${ExpID}.diag_conv_anl.$DateHr &
-      $gritas -obs -o $out_fileo $Gritas_Core_Opt d5124_m2_jan10.diag_conv.${Date}_${Hour}z.ods &
+     $gritas -obs -o $out_fileo $Gritas_Core_Opt ${ExpID}.diag_conv_anl.$DateHr &
+#      $gritas -obs -o $out_fileo $Gritas_Core_Opt d5124_m2_jan10.diag_conv.${Date}_${Hour}z.ods &
 
      wait
      exit
