@@ -35,10 +35,10 @@ source /gpfsm/dnb34/rgovinda/source_motel/SLES12/GrITAS-MERRA2_V2_SLES15/GrITAS/
 set RC_DIR	= ${RootDir}/src/Components/gritas/GIO
 set RC_File  =  ${RC_DIR}/rc_files2/gritas_upconv_merra2.rc
 set RES      = 'd'
-set Gritas_Core_Opt  = "-nlevs 106 -rc $RC_File -hdf -res $RES -ncf -ospl -lb -nopassive"
+#set Gritas_Core_Opt  = "-nlevs 106 -rc $RC_File -hdf -res $RES -ncf -ospl -lb -nopassive"
 
 #set RC_File          = ${RC_DIR}/rc_files/gritas_upconv_merra.rc
-#set Gritas_Core_Opt  = "-nlevs 50 -rc $RC_File -res d -ncf -ospl -lb -nopassive"
+set Gritas_Core_Opt  = "-nlevs 50 -rc $RC_File -res d -ncf -ospl -lb -nopassive"
 set ObsDir0      =   /discover/nobackup/projects/gmao/merra2/data/obs/.WORK
 set ObsDir       =   /discover/nobackup/$user/$ExpID
 set ObsDir       =   /gpfsm/dhome/dao_ops/$ExpID/run/.../archive/obs 
