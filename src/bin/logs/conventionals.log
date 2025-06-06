@@ -1,0 +1,241 @@
+g5_modules: Setting BASEDIR and MOMDIR and modules for discover14
+ RootDir  /gpfsm/dnb34/rgovinda/source_motel/SLES12/GrITAS-MERRA2_V2_SLES15/GrITAS
+ BinDir   /gpfsm/dnb34/rgovinda/source_motel/SLES12/GrITAS-MERRA2_V2_SLES15/GrITAS/Linux/bin
+ RC_DIR   /discover/nobackup/dao_ops/TEST/M2_GRITAS/GrITAS/src/Components/gritas/GIO
+ n4zip_dir /discover/nobackup/dao_ops/TEST/M2_GRITAS/GrITAS/src/Components/gritas/GIO/n4zip.csh
+DayDir /discover/nobackup/projects/gmao/merra2/data/obs/.WORK/products_wjd/conv/d/Y2018/M03/D01
+[1] 5138
+[1] 5155
+ 
+       Resolution:          576         361         106
+    Residual type: obs
+ Input  File type: ods
+ Output File type: hdf
+        Del files:            1
+      o d5124_m2_jan10.diag_conv_anl.20180301_00z.bin
+ 
+ Grid output file: gritaso00
+ 
+ 
+  Bias, stdv and nobs will be placed in the files 
+  with the basenames, 
+    gritaso00.bias,
+    gritaso00.stdv and 
+    gritaso00.nobs
+ 
+ 
+ Vertical Levels:    1000.00000000000        975.000000000000     
+   950.000000000000        925.000000000000        900.000000000000     
+   875.000000000000        850.000000000000        825.000000000000     
+   800.000000000000        775.000000000000        750.000000000000     
+   725.000000000000        700.000000000000        675.000000000000     
+   650.000000000000        625.000000000000        600.000000000000     
+   575.000000000000        550.000000000000        525.000000000000     
+   500.000000000000        475.000000000000        450.000000000000     
+   425.000000000000        400.000000000000        375.000000000000     
+   350.000000000000        325.000000000000        300.000000000000     
+   275.000000000000        250.000000000000        225.000000000000     
+   200.000000000000        175.000000000000        150.000000000000     
+   125.000000000000        100.000000000000        70.0000000000000     
+   50.0000000000000        40.0000000000000        30.0000000000000     
+   20.0000000000000        10.0000000000000        7.00000000000000     
+   5.00000000000000        4.00000000000000        3.00000000000000     
+   2.00000000000000        1.00000000000000       0.699999988079071     
+  0.500000000000000       0.400000005960464       0.300000011920929     
+  0.100000001490116     
+ 
+ Kx-Kt table...
+ 
+ Variable            1 : tv_raob
+    o kt =           44
+    o kx =          120         132
+ 
+ Variable            2 : qv_raob
+    o kt =           11
+    o kx =          120         132
+ 
+ Variable            3 : u_raob
+    o kt =            4
+    o kx =          220         221         232
+ 
+ Variable            4 : v_raob
+    o kt =            5
+    o kx =          220         221         232
+ 
+ Variable            5 : ps_raob
+    o kt =           33
+    o kx =          120         232
+ 
+ Variable            6 : tv_acraft
+    o kt =           44
+    o kx =          130         131         133
+ 
+ Variable            7 : qv_acraft
+    o kt =           11
+    o kx =          130         131         133
+ 
+ Variable            8 : u_acraft
+    o kt =            4
+    o kx =          230         231         233
+ 
+ Variable            9 : v_acraft
+    o kt =            5
+    o kx =          230         231         233
+ 
+ Variable           10 : u_prof
+    o kt =            4
+    o kx =          223         224
+ 
+ Variable           11 : v_prof
+    o kt =            5
+    o kx =          223         224
+ 
+ Variable           12 : u_scat
+    o kt =            4
+    o kx =          285         286         289         290
+ 
+ Variable           13 : v_scat
+    o kt =            5
+    o kx =          285         286         289         290
+ 
+ Variable           14 : w_ssmi
+    o kt =           12
+    o kx =          283
+ 
+ Variable           15 : u_amv
+    o kt =            4
+    o kx =          242         243         244         245         246
+         252         253         255         257         258
+ 
+ Variable           16 : v_amv
+    o kt =            5
+    o kx =          242         243         244         245         246
+         252         253         255         257         258
+ 
+ Variable           17 : sst_sea
+    o kt =           39
+    o kx =          180         181         183
+ 
+ Variable           18 : tv_sea
+    o kt =           44
+    o kx =          180
+ 
+ Variable           19 : ps_sea
+    o kt =           33
+    o kx =          180         183
+ 
+ Variable           20 : u_sea
+    o kt =            4
+    o kx =          280         282         284
+ 
+ Variable           21 : v_sea
+    o kt =            5
+    o kx =          280         282         284
+ 
+ Variable           22 : qv_sea
+    o kt =           11
+    o kx =          180
+ 
+ Variable           23 : ps_land
+    o kt =           33
+    o kx =          181         187
+ 
+ Variable           24 : ps_paob
+    o kt =           33
+    o kx =          191
+ 
+ Variable           25 : tv_drift
+    o kt =           44
+    o kx =          199
+ 
+ Variable           26 : tv_mls
+    o kt =           44
+    o kx =          304
+ 
+ Variable           27 : u_drift
+    o kt =            4
+    o kx =          299
+ 
+ Variable           28 : v_drift
+    o kt =            5
+    o kx =          299
+ 
+ Variable           29 : ps_drift
+    o kt =           33
+    o kx =          199
+ 
+ Variable           30 : bang_gps
+    o kt =           89
+    o kx =            3           4          41          42         722
+         723         740         741         742         743         744
+         745         786         820
+ 
+ Number of 2D SURFACE   grids:           17     ==>            5          12
+          13          14          17          18          19          20
+          21          22          23          24          25          26
+          27          28          29
+ Number of 3D UPPER-AIR grids:           13     ==>            1           2
+           3           4           6           7           8           9
+          10          11          15          16          30
+                                 ---
+                                         30
+ 
+        p1         p        p2
+     2000.0    1000.0     987.4
+      987.4     975.0     962.4
+      962.4     950.0     937.4
+      937.4     925.0     912.4
+      912.4     900.0     887.4
+      887.4     875.0     862.4
+      862.4     850.0     837.4
+      837.4     825.0     812.4
+      812.4     800.0     787.4
+      787.4     775.0     762.4
+      762.4     750.0     737.4
+      737.4     725.0     712.4
+      712.4     700.0     687.4
+      687.4     675.0     662.4
+      662.4     650.0     637.4
+      637.4     625.0     612.4
+      612.4     600.0     587.4
+      587.4     575.0     562.4
+      562.4     550.0     537.4
+      537.4     525.0     512.3
+      512.3     500.0     487.3
+      487.3     475.0     462.3
+      462.3     450.0     437.3
+      437.3     425.0     412.3
+      412.3     400.0     387.3
+      387.3     375.0     362.3
+      362.3     350.0     337.3
+      337.3     325.0     312.2
+      312.2     300.0     287.2
+      287.2     275.0     262.2
+      262.2     250.0     237.2
+      237.2     225.0     212.1
+      212.1     200.0     187.1
+      187.1     175.0     162.0
+      162.0     150.0     136.9
+      136.9     125.0     111.8
+      111.8     100.0      83.7
+       83.7      70.0      59.2
+       59.2      50.0      44.7
+       44.7      40.0      34.6
+       34.6      30.0      24.5
+       24.5      20.0      14.1
+       14.1      10.0       8.4
+        8.4       7.0       5.9
+        5.9       5.0       4.5
+        4.5       4.0       3.5
+        3.5       3.0       2.4
+        2.4       2.0       1.4
+        1.4       1.0       0.8
+        0.8       0.7       0.6
+        0.6       0.5       0.4
+        0.4       0.4       0.3
+        0.3       0.3       0.2
+        0.2       0.1       0.0
+ 
+ ods_dcscan: Cannot read first record on file 
+ d5124_m2_jan10.diag_conv_anl.20180301_00z.bin
+ods_next_time: Cannot open file d5124_m2_jan10.diag_conv_anl.20180301_00z.bin error code:     2
