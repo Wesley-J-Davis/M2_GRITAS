@@ -1,5 +1,5 @@
 #!/bin/csh -f
-
+set echo
 #######################################################################
 #                     Batch Parameters for Run Job
 #######################################################################
@@ -19,27 +19,28 @@ umask 022
 
 limit stacksize unlimited
 
-setenv RootDir  /discover/nobackup/rgovinda/source_motel/SLES15/GrITAS-MERRA2_V2_SLES15/GrITAS
+setenv RootDir  /discover/nobackup/rgovinda/source_motel/SLES12/GrITAS-MERRA2_V2_SLES15/GrITAS
 setenv BinDir   ${RootDir}/Linux/bin
 
 setenv ExpID d5124_m2_jan10    
 setenv TAG   merra2
 
-set YEAR_TABLE = ( 2019 )
+set YEAR_TABLE = ( 2018 )
 set MONTH_TABLE = ( 01 02 03 04 05 06 07 08 09 10 11 12 )
-set MONTH_TABLE = ( 06 )
+set MONTH_TABLE = ( 01 )
 
 #setenv Dir /gpfsm/dnb05/projects/p47/Ravi/MERRA-2/$ExpID
 
 source $BinDir/g5_modules
+set RunDir      = ${RootDir}/src/Components/gritas/GIO
 
-set RunDir   = `pwd`
+#set RunDir   = `pwd`
 set RC_File  =  ${RunDir}/rc_files2/gritas_upconv_merra2.rc
 set RES      = 'd'
 set Gritas_Core_Opt  = "-nlevs 106 -rc $RC_File -hdf -res $RES -ncf -ospl -lb -nopassive"
  set ObsDir0      =  /discover/nobackup/$user/$ExpID
- set ObsDir      =  /discover/nobackup/mkarki/$ExpID
-#set ObsDir      =   /gpfsm/dnb05/projects/p47/Ravi/MERRA-2
+# set ObsDir      =  /discover/nobackup/mkarki/$ExpID
+ set ObsDir      =   /gpfsm/dnb05/projects/p47/Ravi/MERRA-2
 set PortArchDir =  $ObsDir0/conv/$RES
 setenv Dir  $ObsDir0/conv/$RES
 
@@ -88,6 +89,8 @@ foreach YYYY ( `echo $YEAR_TABLE` )
    endif
 
    cd $WorkDir
+   pwd
+   sleep 5
 
    while ( $Day0 <= $DAY_MAX )
      set Day = $Day0
