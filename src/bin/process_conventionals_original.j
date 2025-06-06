@@ -44,10 +44,16 @@ set Gritas_Core_Opt  = "-nlevs 106 -rc $RC_File -hdf -res $RES -ncf -ospl -lb -n
  set ObsDir0      =  /discover/nobackup/projects/gmao/merra2/data/obs/.WORK
  set ObsDir      =  /discover/nobackup/$user/$ExpID
  set ObsDir      =   /gpfsm/dnb05/projects/p47/Ravi/MERRA-2
+set ObsDir       =   /gpfsm/dhome/dao_ops/$ExpID/run/.../archive
+
 set PortArchDir =  $ObsDir0/conv/$RES
 setenv Dir  $ObsDir0/conv/$RES
 
 mkdir -p $PortArchDir
+
+set Storage_Base =  $ObsDir0/products_wjd/conv/$RES
+set Work_Base    =  $ObsDir0/raw_obs_wjd/conv/$RES
+
 
  set n4zip_file   = /home/rgovinda/bin/n4zip.csh0
 
@@ -71,6 +77,9 @@ foreach YYYY ( `echo $YEAR_TABLE` )
    set DateFrag = ${YYYY}${MM}
    set WorkDir     = $Dir/Y$YYYY/M$MM
    set STORAGE_DIR = $PortArchDir/Y$YYYY/M$MM
+   set WorkDir     = ${Work_Base}/Y$YYYY/M$MM
+   set STORAGE_DIR = ${Storage_Base}/Y$YYYY/M$MM
+   mkdir -p $STORAGE_DIR
 
    mkdir -p $WorkDir
 
@@ -118,20 +127,21 @@ foreach YYYY ( `echo $YEAR_TABLE` )
      wait
      cp ${diag_anl_File} .
      cp ${diag_ges_File} .
+     ls
      wait
 
       set out_fileo   = gritaso${Hour}
       /bin/rm -f ${out_fileo}.{bias,stdv,nobs}.nc4
 
 #     echo $diag_anl_File $out_fileo
-      $gritas -obs -o $out_fileo $Gritas_Core_Opt ${diag_anl_File} 
-      wait
-      sleep 10
+#      $gritas -obs -o $out_fileo $Gritas_Core_Opt ${diag_anl_File} 
+#      wait
+#      sleep 10
       $gritas -obs -o $out_fileo $Gritas_Core_Opt ${ExpID}.diag_conv_anl.$DateHr
       wait
       sleep 10
-
       exit
+
 
       set out_filef   = gritasf${Hour}
       /bin/rm -f ${out_filef}.{bias,stdv,nobs}.hdf
