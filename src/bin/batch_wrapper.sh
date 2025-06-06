@@ -17,8 +17,8 @@ do
 	else
 
 		echo "Executing script for $YT conventional obs"
-		move_data=$(sbatch -W --parsable -J ${YT}.${INSTRUMENT}.M2datamove -o ${YT}.${INSTRUMENT}.datamove.log --export=YEAR_TABLE=${YT},INSTRUMENT_TABLE=$INSTRUMENT ${PWD}/move_conventionals.j)
-                do_gritas=$(sbatch --parsable --dependency=afterok:${move_data} -J ${YT}.${INSTRUMENT}.M2gritas -o ${YT}.${INSTRUMENT}.Gprocess.log --export=YEAR_TABLE=${YT},INSTRUMENT_TABLE=$INSTRUMENT ${PWD}/process_conventionals.j)
+		move_conv=$(sbatch -W --parsable -J ${YT}.${INSTRUMENT}.M2datamove -o ${YT}.${INSTRUMENT}.datamove.log --export=YEAR_TABLE=${YT},INSTRUMENT_TABLE=$INSTRUMENT ${PWD}/move_conventionals.j)
+                sbatch --dependency=afterok:${move_conv} -J ${YT}.${INSTRUMENT}.M2gritas -o ${YT}.${INSTRUMENT}.Gprocess.log --export=YEAR_TABLE=${YT},INSTRUMENT_TABLE=$INSTRUMENT ${PWD}/process_conventionals.j
 		exit
 	fi
 	echo "$YT Complete"
