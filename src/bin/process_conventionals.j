@@ -19,14 +19,14 @@ umask 022
 
 limit stacksize unlimited
 
-#setenv RootDir  /discover/nobackup/dao_ops/TEST/M2_GRITAS/GrITAS
-setenv RootDir  /gpfsm/dnb34/rgovinda/source_motel/SLES12/GrITAS-MERRA2_V2_SLES15/GrITAS
+setenv RootDir  /discover/nobackup/dao_ops/TEST/M2_GRITAS/GrITAS
+#setenv RootDir  /gpfsm/dnb34/rgovinda/source_motel/SLES12/GrITAS-MERRA2_V2_SLES15/GrITAS
 setenv BinDir   ${RootDir}/Linux/bin
 
 setenv ExpID d5124_m2_jan10    
 setenv TAG   merra2
 
-#set YEAR_TABLE = ( 201801 )
+set YEAR_TABLE = ( 201801 )
 
 #setenv Dir /gpfsm/dnb05/projects/p47/Ravi/MERRA-2/$ExpID
 #source /gpfsm/dnb34/rgovinda/source_motel/SLES12/GrITAS-MERRA2_V2_SLES15/GrITAS/src/g5_modules
@@ -35,16 +35,15 @@ source $BinDir/g5_modules
 set RC_DIR	= ${RootDir}/src/Components/gritas/GIO
 set RC_File  =  ${RC_DIR}/rc_files2/gritas_upconv_merra2.rc
 set RES      = 'd'
-#set Gritas_Core_Opt  = "-nlevs 106 -rc $RC_File -hdf -res $RES -ncf -ospl -lb -nopassive"
+set Gritas_Core_Opt  = "-nlevs 106 -rc $RC_File -hdf -res $RES -ncf -ospl -lb -nopassive"
 
 #set RC_File          = ${RC_DIR}/rc_files/gritas_upconv_merra.rc
-set Gritas_Core_Opt  = "-nlevs 50 -rc $RC_File -res d -ncf -ospl -lb -nopassive"
+#set Gritas_Core_Opt  = "-nlevs 50 -rc $RC_File -res d -ncf -ospl -lb -nopassive"
 set ObsDir0      =   /discover/nobackup/projects/gmao/merra2/data/obs/.WORK
-set ObsDir       =   /discover/nobackup/$user/$ExpID
 set ObsDir       =   /gpfsm/dhome/dao_ops/$ExpID/run/.../archive/obs 
 
 set Storage_Base =  $ObsDir0/products_wjd/conv/$RES
-set Work_Base	 =  $ObsDir0/raw_obs_wjd/conv/$RES
+set Work_Base	 =  $ObsDir0/raw_obs_wjd/conv
 
 set n4zip_file   = ${RC_DIR}/n4zip.csh
 
@@ -63,14 +62,13 @@ set diag_BName = $ExpID.diag_conv_
 
 set DAY_TABLE = ( 31 28 31 30 31 30 31 31 30 31 30 31 ) 
 set SYNOP_TABLE = ( 00 06 12 18 )
-set YEAR_TABLE = ( 201803 )
 foreach YYYYMM ( `echo $YEAR_TABLE` )
 
    set YYYY = `echo $YYYYMM | cut -c 1-4`
    set MM   = `echo $YYYYMM | cut -c 5-6`
    set DateFrag = ${YYYY}${MM}
 
-   set WorkDir     = ${Work_Base}/Y$YYYY/M$MM
+   set WorkDir     = ${Work_Base}/${YEAR_TABLE}
    set STORAGE_DIR = ${Storage_Base}/Y$YYYY/M$MM
 
    mkdir -p $WorkDir
@@ -112,14 +110,14 @@ foreach YYYYMM ( `echo $YEAR_TABLE` )
 #    set diag_anl_File = /discover/nobackup/rgovinda/$ExpID/obs/Y$YYYY/M$MM/${ExpID}.diag_conv_anl.$DateHr
 #    set diag_ges_File = /discover/nobackup/rgovinda/$ExpID/obs/Y$YYYY/M$MM/${ExpID}.diag_conv_ges.$DateHr
 # d5124_m2_jan10.diag_conv.20180331_18z.ods
-     set diag_anl_File = $ObsDir/Y$YYYY/M$MM/D$Day/${ExpID}.diag_conv_anl.$DateHr
-     set diag_ges_File = $ObsDir/Y$YYYY/M$MM/D$Day/${ExpID}.diag_conv_ges.$DateHr
-     nohup dmget $diag_anl_File $diag_ges_File &
+#     set diag_anl_File = $ObsDir/Y$YYYY/M$MM/D$Day/${ExpID}.diag_conv_anl.$DateHr
+#     set diag_ges_File = $ObsDir/Y$YYYY/M$MM/D$Day/${ExpID}.diag_conv_ges.$DateHr
+#     nohup dmget $diag_anl_File $diag_ges_File &
 #     nohup dmget  d5124_m2_jan10.diag_conv.${Date}_${Hour}z.ods &
 
      wait
 #     cp $ObsDir/Y$YYYY/M$MM/D$Day/H${Hour}/d5124_m2_jan10.diag_conv.${Date}_${Hour}z.ods .
-     cp $diag_anl_File .
+#     cp $diag_anl_File .
 #    cp $diag_ges_File . 
 
      set out_fileo   = gritaso${Hour}
@@ -131,14 +129,13 @@ foreach YYYYMM ( `echo $YEAR_TABLE` )
 #      $gritas -obs -o $out_fileo $Gritas_Core_Opt d5124_m2_jan10.diag_conv.${Date}_${Hour}z.ods &
 
      wait
-     exit
 
 #     $gritas -obs -o $out_fileo $Gritas_Core_Opt d5124_m2_jan10.diag_conv.${Date}_${Hour}z.ods &
 
      set out_filef   = gritasf${Hour}
      /bin/rm -f ${out_filef}.{bias,stdv,nobs}.hdf
 #    echo $diag_ges_File $out_filef
-     $gritas -omf -o $out_filef $Gritas_Core_Opt ${diag_ges_File} &
+#     $gritas -omf -o $out_filef $Gritas_Core_Opt ${diag_ges_File} &
      $gritas -omf -o $out_filef $Gritas_Core_Opt ${ExpID}.diag_conv_ges.$DateHr &
 
       
@@ -146,15 +143,12 @@ foreach YYYYMM ( `echo $YEAR_TABLE` )
      /bin/rm -f ${out_filea}.{bias,stdv,nobs}.hdf
 
 #    echo $diag_anl_File $out_filea
-     $gritas -oma -o $out_filea $Gritas_Core_Opt ${diag_anl_File} &
+#     $gritas -oma -o $out_filea $Gritas_Core_Opt ${diag_anl_File} &
      $gritas -oma -o $out_filea $Gritas_Core_Opt ${ExpID}.diag_conv_anl.$DateHr &
 
      wait
      ls
-     ls $diag_anl_File
-     ls $diag_ges_File
      ls /gpfsm/dhome/dao_ops/d5124_m2_jan10/run/.../archive/obs/Y$YYYY/M$MM/D01/d5124_m2_jan10*
-     exit
 
      
 
@@ -179,3 +173,4 @@ foreach YYYYMM ( `echo $YEAR_TABLE` )
    csh -vx ${RC_DIR}/daoit_gritas2means.csh0 ${YYYY}${MM} -r rms
    csh -vx ${RC_DIR}/daoit_gritas2means.csh0 ${YYYY}${MM} -r obrate
 end
+echo $STORAGE_DIR
